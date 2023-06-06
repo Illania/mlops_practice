@@ -1,0 +1,143 @@
+  147  cd ubuntu
+  148  mkdir lab4
+  149  mkdir lab4/datasets
+  150  git init
+  151  dvc init
+  152  git commit -m "init dvc"
+  153  cd lab4
+  154  git init
+  155  dvc init
+  156  git commit -m "init dvc"
+  157  git add datasets
+  158  git config --global --add safe.directory /home/illania/ubuntu/lab4
+  159  git add datasets
+  160  dvc add datasets
+  161  git add .gitignore datasets.dvc
+  162  touch data_creation.py
+  163  nano data_creation.py
+  164  python3  data_creation.py
+  165  ls -la
+  166  cd datasets
+  167  ls -la
+  168  git commit -m "put datasets under control"
+  169  dvc add remote "lab4" gdrive://1m0JV83-eTIrzDHCqPeMeRwp1qQPNIbSs
+  170  dvc remote add "lab4" gdrive://1m0JV83-eTIrzDHCqPeMeRwp1qQPNIbSs
+  171  git add .dvc/config
+  172  cd..
+  173  cd.
+  174  cd ./
+  175  cd ..
+  176  git add .dvc/config
+  177  git commit -m "google drive added as a remote dataset storage"
+  178  dvc push
+  179  dvc add remote "lab4" gdrive://1m0JV83-eTIrzDHCqPeMeRwp1qQPNIbSs
+  180  dvc add remote "lab4_mlops" gdrive://1m0JV83-eTIrzDHCqPeMeRwp1qQPNIbSs
+  181  cd datasets
+  182  dvc remote remove "lab4_mlops" gdrive://1m0JV83-eTIrzDHCqPeMeRwp1qQPNIbSs
+  183  cd ..
+  184  dvc remote add "lab4_mlops" gdrive://1m0JV83-eTIrzDHCqPeMeRwp1qQPNIbSs
+  185  dvc push
+  186  dvc push -r lab4_mlops
+  187  dvc add datasets
+  188  dvc push -r lab4_mlops
+  189  touch data_modification_v1.py
+  190  nano data_modification_v1.py
+  191  python3 data_modification_v1.py
+  192  cd datasets
+  193  ls -la
+  194  nano data_modification_v1.py
+  195  cd ..
+  196  nano data_modification_v1.py
+  197  python3 data_modification_v1.py
+  198  cat data.csv
+  199  cd datasets
+  200  cat data.csv
+  201  dvc add datasets
+  202  cd ..
+  203  dvc add datasets
+  204* 
+  205  git add .
+  206  git commit -m "data modification v1"
+  207  dvc push -r lab4_mlops
+  208  nano data_modification_v2.py
+  209  ls
+  210  python3 data_modification_v2.py
+  211  git add .
+  212  git commit -m "data modification v2"
+  213  dvc push -r lab4_mlops
+  214  python3 data_modification_v2.py
+  215  nano data_modification_v2.py
+  216  cat data.csv
+  217  cat datasets/data.csv
+  218  dvc add datasets
+  219  git add .
+  220  git commit -m "data modification v2"
+  221  dvc push -r lab4_mlops
+  222  nano data_modification_v3.py
+  223  python3 data_modification_v3.py
+  224  dvc add datasets
+  225  git add .
+  226  git commit -m "data modification v3"
+  227  dvc push -r lab4_mlops
+  228  rm -rf datasets
+  229  ls -lh
+  230  dvc pull -r lab4_mlops
+  231  cd datasets
+  232  ls
+  233  rm data_v1.csv
+  234  dvc add datasets
+  235  cd ..
+  236  dvc add datasets
+  237  git commit -m "deleted data_v1.csv"
+  238  git commit -a
+  239  dvc pull -r lab4_mlops
+  240  dvc push -r lab4_mlops
+  241  rm -rf datasets
+  242  dvc pull -r lab4_mlops
+  243  cd datasets
+  244  ls
+  245  git log --oneline
+  246  git checkout 9f12c5c
+  247  dvc pull -r lab4_mlops
+  248  ls
+  249  git log --oneline
+  250  git checkout c688fc1
+  251* 
+  252  ls
+  253  cat data.csv
+  254  git log --oneline
+  255  git checkout 673e2a8
+  256  dvc pull -r lab4_mlops
+  257  git checkout c688fc1
+  258  dvc pull -r lab4_mlops
+  259  git log --oneline
+  260  git checkout
+  261  git log --oneline
+  262* 
+  263  git log
+  264  git log --oneline
+  265  git checkout c688fc1
+  266  dvc pull -r lab4_mlops
+  267  cd..
+  268  cd ..
+  269  python3 data_modification_v3.py
+  270  ls
+  271  nano data_modification_v3.py
+  272  dvc add datasets
+  273  git add .
+  274* 
+  275  dvc push -r lab4_mlops
+  276  cd datasets
+  277  rm data_v1.csv
+  278  cd ..
+  279  dvc add datasets
+  280  git add.
+  281  git commit -m "deleted data_v1.csv"
+  282  git add .
+  283  git commit -m "deleted data_v1.csv"
+  284  dvc push -r lab4_mlops
+  285  git log --oneline
+  286  git checkout 673e2a8
+  287  dvc pull -r lab4_mlops
+  288  cat datasets/data.csv
+  289  history > history_for_print.txt
